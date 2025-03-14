@@ -1,0 +1,23 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    stop_signal: SIGINT
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: ./build/php
+      dockerfile: Dockerfile
+    container_name: php
+    stop_signal: SIGINT
+    volumes:
+      - data:/data
+    ports:
+      - "9000:9000"
+
+volumes:
+  data:
