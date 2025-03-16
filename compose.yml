@@ -18,7 +18,7 @@ services:
     container_name: php
     stop_signal: SIGINT
     volumes:
-      - ./src/:/usr/share/nginx/html
+      - ./build/php/src:/usr/share/nginx/html
       - data:/data
     ports:
       - "9000:9000"
